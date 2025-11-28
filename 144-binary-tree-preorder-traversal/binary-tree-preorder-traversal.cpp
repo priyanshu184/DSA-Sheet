@@ -1,15 +1,13 @@
 class Solution {
 public:
-    void preorderHelper(TreeNode* root, vector<int>& ans) {
-        if(root==NULL) return;
-        ans.push_back(root->val);
-        preorderHelper(root->left, ans);
-        preorderHelper(root->right, ans);
-    }
+    vector<int> v;
 
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        preorderHelper(root, ans);
-        return ans;
+        if (root != NULL) {
+            v.push_back(root->val);
+            preorderTraversal(root->left);
+            preorderTraversal(root->right);
+        }
+        return v;
     }
 };
